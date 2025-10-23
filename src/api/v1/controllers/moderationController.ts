@@ -91,3 +91,18 @@ export const flagUser = (req: Request, res: Response): void => {
         },
     });
 };
+
+export const moderateContent = (req: Request, res: Response) => {
+  const { content } = req.body;
+
+  if (!content) {
+    return res.status(400).json({ message: "Content is required" });
+  }
+
+  const isApproved = !content.includes("badword");
+
+  res.status(200).json({
+    message: isApproved ? "Content approved ✅" : "Content rejected 🚫",
+    approved: isApproved,
+  });
+};

@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import moderationRoutes from "./api/v1/routes/moderationRoutes";
+import swaggerSetup from "./config/swagger";
 
 const app: Express = express();
 app.use(express.json());
@@ -15,5 +16,7 @@ app.use("/api/v1/moderation", moderationRoutes);
 app.use((req: Request, res: Response): void => {
     res.status(404).json({ message: "Endpoint not found" });
 });
+
+swaggerSetup(app);
 
 export default app;
