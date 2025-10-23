@@ -8,3 +8,4 @@ const setupSwagger = (app: Express): void => {
 };
 
 export default setupSwagger;
+
